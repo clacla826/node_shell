@@ -18,5 +18,14 @@ module.exports = {
       })
       process.stdout.write("prompt > ");
     })
+  },
+  cat: function() {
+    process.stdin.on("data", function (data) {
+      var cmd = data.toString().trim();
+      var arr = cmd.split(" ");
+      fs.readFile(arr[1], function(err, fileText) {
+        process.stdout.write(fileText.toString());
+      })
+    })
   }
 }
