@@ -1,12 +1,16 @@
 // Output a prompt
-process.stdout.write(‘prompt > ’);
+process.stdout.write("prompt > ");
+
+var commands = require("./commands")
+
+var userCommand = "pwd";
+commands[userCommand]();
+
 
 // The stdin ‘data’ event fires after a user types in a line
-process.stdin.on(‘data’, function (data) {
+process.stdin.on("data", function (data) {
   var cmd = data.toString().trim(); // remove the newline
-  if (cmd === ‘pwd’) {
-    process.stdout.write(__filename);
-  } else if (cmd === ‘date’) {
+  if (cmd === "date") {
     var datetime = new Date();
     process.stdout.write(datetime.toString());
   }
