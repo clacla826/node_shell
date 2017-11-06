@@ -23,7 +23,8 @@ module.exports = {
     process.stdin.on("data", function (data) {
       var cmd = data.toString().trim();
       var arr = cmd.split(" ");
-      fs.readFile(arr[1], function(err, fileText) {
+      var fileName = arr[1].toString();
+      fs.readFile(fileName, function(err, fileText) {
         process.stdout.write(fileText.toString());
       })
     })
